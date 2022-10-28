@@ -128,7 +128,7 @@
         "3": {
             "name": "Line Bot",
             "tech_stack_used": "Tech Stack: Python and Line API",
-            "description": "Wrote a chat bot for a popular social media app in Taiwan. The chat bot had several different functions, including web crawling for the products you want to buy, giving you detailed information on the metro, such as the depart times, which station you should depart from, and the different options you have if you want to get to a particular destination.",
+            "description": "Wrote a chat bot for a popular social media app in Taiwan. The chat bot had several different functions, including web crawling for the products you want to buy, giving you detailed information on the metro, such as the depart times, which station you should depart from, and the different options you have if you want to get to a particular destination. The chat bot was also hosted on the Heroku server.",
             "general_or_github_link": ""
         },
         "4": {
