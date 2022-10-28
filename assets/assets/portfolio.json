@@ -130,6 +130,12 @@
             "tech_stack_used": "Tech Stack: Python and Line API",
             "description": "Wrote a chat bot for a popular social media app in Taiwan. The chat bot had several different functions, including web crawling for the products you want to buy, giving you detailed information on the metro, such as the depart times, which station you should depart from, and the different options you have if you want to get to a particular destination.",
             "general_or_github_link": ""
+        },
+        "4": {
+            "name": "Machine Learning Project",
+            "tech_stack_used": "Python and TensorFlow",
+            "description": "Programmed and trained a machine learning model where it can identify and output handwritten words, letters, and numbers. The accuracy acheived was 85% and was improved via self-generated data, online data bases, and cross validation. The program can even identify letters and numbers from street signs and car plates.",
+            "general_or_github_link": ""
         }
     },
     "achievements": {
