@@ -121,18 +121,18 @@ img {
 .cursor-orb {
   position: fixed;
   z-index: 80;
-  display: none;
-  width: 92px;
-  height: 92px;
+  width: 320px;
+  height: 320px;
   border: 0;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--accent-2) 30%, transparent);
+  background:
+    radial-gradient(circle, rgba(219, 176, 168, 0.3) 0%, rgba(216, 190, 170, 0.18) 38%, rgba(201, 214, 207, 0) 72%);
   box-shadow: none;
   pointer-events: none;
   opacity: 0;
   translate: -50% -50%;
-  mix-blend-mode: normal;
-  filter: blur(18px);
+  mix-blend-mode: multiply;
+  filter: blur(22px);
   transition:
     opacity 180ms ease,
     width 180ms ease,
@@ -142,13 +142,14 @@ img {
 }
 
 .cursor-orb.is-visible {
-  opacity: 0.66;
+  opacity: 0.58;
 }
 
 .cursor-orb.is-large {
-  width: 128px;
-  height: 128px;
-  background: color-mix(in srgb, var(--accent-2) 36%, transparent);
+  width: 380px;
+  height: 380px;
+  background:
+    radial-gradient(circle, rgba(219, 176, 168, 0.34) 0%, rgba(216, 190, 170, 0.2) 38%, rgba(201, 214, 207, 0) 72%);
   box-shadow: none;
 }
 
@@ -1627,7 +1628,7 @@ body.mode-kinetic .console-panel {
 
 .portfolio-stance {
   position: absolute;
-  left: 58%;
+  left: 55%;
   bottom: -145px;
   z-index: 2;
   width: min(48vw, 790px);
@@ -1636,7 +1637,7 @@ body.mode-kinetic .console-panel {
   object-fit: contain;
   object-position: bottom center;
   filter: drop-shadow(0 24px 46px rgba(18, 23, 27, 0.22));
-  transform: translateX(-18%);
+  transform: translateX(-26%);
   animation: stanceFloat 7s ease-in-out infinite;
 }
 
@@ -2267,11 +2268,11 @@ body.mode-kinetic .console-panel {
 @keyframes stanceFloat {
   0%,
   100% {
-    transform: translateX(-18%) translateY(0);
+    transform: translateX(-26%) translateY(0);
   }
 
   50% {
-    transform: translateX(-18%) translateY(-8px);
+    transform: translateX(-26%) translateY(-8px);
   }
 }
 
