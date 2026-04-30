@@ -121,20 +121,17 @@ img {
 .cursor-orb {
   position: fixed;
   z-index: 80;
-  width: 76px;
-  height: 76px;
+  width: 92px;
+  height: 92px;
   border: 0;
   border-radius: 999px;
-  background:
-    radial-gradient(circle, color-mix(in srgb, var(--accent-2) 44%, transparent) 0%, transparent 66%);
-  box-shadow:
-    0 0 28px color-mix(in srgb, var(--accent-2) 34%, transparent),
-    0 0 58px color-mix(in srgb, var(--accent-2) 24%, transparent);
+  background: color-mix(in srgb, var(--accent-2) 30%, transparent);
+  box-shadow: none;
   pointer-events: none;
   opacity: 0;
   translate: -50% -50%;
   mix-blend-mode: normal;
-  filter: blur(8px);
+  filter: blur(18px);
   transition:
     opacity 180ms ease,
     width 180ms ease,
@@ -144,17 +141,14 @@ img {
 }
 
 .cursor-orb.is-visible {
-  opacity: 0.78;
+  opacity: 0.66;
 }
 
 .cursor-orb.is-large {
-  width: 112px;
-  height: 112px;
-  background:
-    radial-gradient(circle, color-mix(in srgb, var(--accent-2) 48%, transparent) 0%, transparent 68%);
-  box-shadow:
-    0 0 34px color-mix(in srgb, var(--accent-2) 38%, transparent),
-    0 0 76px color-mix(in srgb, var(--accent-2) 28%, transparent);
+  width: 128px;
+  height: 128px;
+  background: color-mix(in srgb, var(--accent-2) 36%, transparent);
+  box-shadow: none;
 }
 
 .scroll-progress {
@@ -1632,7 +1626,7 @@ body.mode-kinetic .console-panel {
 
 .portfolio-stance {
   position: absolute;
-  left: 55%;
+  left: 58%;
   bottom: -145px;
   z-index: 2;
   width: min(48vw, 790px);
@@ -1641,7 +1635,7 @@ body.mode-kinetic .console-panel {
   object-fit: contain;
   object-position: bottom center;
   filter: drop-shadow(0 24px 46px rgba(18, 23, 27, 0.22));
-  transform: translateX(-26%);
+  transform: translateX(-18%);
   animation: stanceFloat 7s ease-in-out infinite;
 }
 
@@ -1927,17 +1921,23 @@ body.mode-kinetic .console-panel {
 
 .skill-groups {
   display: grid;
-  gap: 1px;
+  gap: 0;
   margin-top: 104px;
   overflow: hidden;
   border: 1px solid rgba(23, 23, 22, 0.1);
   border-radius: 22px;
-  background: rgba(23, 23, 22, 0.1);
+  background: rgba(255, 255, 255, 0.62);
+  box-shadow: 0 24px 70px rgba(38, 35, 30, 0.08);
 }
 
 .skill-groups div {
   padding: 24px;
-  background: rgba(255, 255, 255, 0.62);
+  background: transparent;
+  border-bottom: 1px solid rgba(23, 23, 22, 0.08);
+}
+
+.skill-groups div:last-child {
+  border-bottom: 0;
 }
 
 .skill-groups p {
@@ -2266,11 +2266,11 @@ body.mode-kinetic .console-panel {
 @keyframes stanceFloat {
   0%,
   100% {
-    transform: translateX(-26%) translateY(0);
+    transform: translateX(-18%) translateY(0);
   }
 
   50% {
-    transform: translateX(-26%) translateY(-8px);
+    transform: translateX(-18%) translateY(-8px);
   }
 }
 
