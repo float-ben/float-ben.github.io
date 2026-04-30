@@ -1535,6 +1535,14 @@ body.mode-kinetic .console-panel {
   color: #fbfaf6;
 }
 
+#work,
+#projects,
+#skills,
+#community,
+#contact {
+  scroll-margin-top: calc(var(--header-height) + 108px);
+}
+
 .portfolio-meta,
 .portfolio-section-heading span,
 .portfolio-contact-band span {
@@ -1835,7 +1843,6 @@ body.mode-kinetic .console-panel {
   font-size: 0.78rem;
   font-weight: 820;
   text-transform: uppercase;
-  white-space: nowrap;
 }
 
 .community-card p {
@@ -1957,7 +1964,8 @@ body.mode-kinetic .console-panel {
   gap: 10px;
 }
 
-.portfolio-contact-links a {
+.portfolio-contact-links a,
+.portfolio-contact-links span {
   display: flex;
   min-height: 48px;
   align-items: center;
@@ -1969,6 +1977,10 @@ body.mode-kinetic .console-panel {
   font-size: 0.88rem;
   font-weight: 760;
   overflow-wrap: anywhere;
+}
+
+.portfolio-contact-links span {
+  cursor: default;
 }
 
 .artifact-grid {
