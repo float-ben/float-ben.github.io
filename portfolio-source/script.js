@@ -5,6 +5,27 @@ const progress = document.querySelector(".scroll-progress");
 const cursor = document.querySelector(".cursor-orb");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+if ("scrollRestoration" in history) {
+  history.scrollRestoration = "manual";
+}
+
+function scrollToPageTop() {
+  window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+}
+
+scrollToPageTop();
+requestAnimationFrame(scrollToPageTop);
+
+window.addEventListener("pageshow", () => {
+  scrollToPageTop();
+  window.setTimeout(scrollToPageTop, 90);
+});
+
+window.addEventListener("load", () => {
+  scrollToPageTop();
+  window.setTimeout(scrollToPageTop, 160);
+});
+
 const roles = {
   adyen: {
     date: "August 2025 - December 2025",
@@ -109,12 +130,14 @@ document.querySelectorAll("[data-copy-email]").forEach((control) => {
     try {
       await navigator.clipboard.writeText(email);
       control.setAttribute("aria-label", "Copied email address");
+      control.classList.add("is-copied");
     } catch {
       control.setAttribute("aria-label", "Select email address");
     }
 
     window.setTimeout(() => {
       control.setAttribute("aria-label", "Copy email address");
+      control.classList.remove("is-copied");
     }, 1400);
   }
 
@@ -204,6 +227,28 @@ const ropeShadow = document.querySelector("[data-rope-shadow]");
 const ropeThread = document.querySelector("[data-rope-thread]");
 const strapIcons = [...document.querySelectorAll("[data-strap-icon]")];
 const fallbackScan = document.querySelector("[data-fallback-scan]");
+
+function revealUnlockedPortfolio() {
+  const portfolioSection = document.querySelector(".prototype-lanyard .lab-section");
+
+  lanyardScene?.classList.add("is-unlocked");
+  lanyardScene?.classList.remove("is-near");
+  lanyardArticle?.classList.add("is-unlocked");
+  scanOutput?.setAttribute("aria-hidden", "false");
+  unlockCopyPanel?.setAttribute("aria-hidden", "false");
+  scanInstruction?.setAttribute("aria-hidden", "true");
+  portfolioSection?.classList.add("is-visible");
+
+  window.setTimeout(() => {
+    portfolioSection?.scrollIntoView({
+      behavior: reduceMotion ? "auto" : "smooth",
+      block: "start",
+    });
+  }, reduceMotion ? 0 : 2600);
+}
+
+fallbackScan?.addEventListener("click", revealUnlockedPortfolio);
+window.unlockLanyardPortfolio = revealUnlockedPortfolio;
 
 function setupLanyardPhysics() {
   if (!lanyardScene || !lanyardBadge || !lanyardScanner || !ropePath || !ropeShadow || !ropeThread) return;
@@ -342,12 +387,7 @@ function setupLanyardPhysics() {
     if (state.unlocked) return;
     state.unlocked = true;
     state.dragging = false;
-    lanyardScene.classList.remove("is-near");
-    lanyardScene.classList.add("is-unlocked");
-    lanyardArticle?.classList.add("is-unlocked");
-    scanOutput?.setAttribute("aria-hidden", "false");
-    unlockCopyPanel?.setAttribute("aria-hidden", "false");
-    scanInstruction?.setAttribute("aria-hidden", "true");
+    revealUnlockedPortfolio();
 
     const badgePoint = state.points[3];
     badgePoint.x = hitbox.centerX + 36;
@@ -355,12 +395,6 @@ function setupLanyardPhysics() {
     badgePoint.oldX = badgePoint.x;
     badgePoint.oldY = badgePoint.y;
 
-    window.setTimeout(() => {
-      document.querySelector(".prototype-lanyard .lab-section")?.scrollIntoView({
-        behavior: reduceMotion ? "auto" : "smooth",
-        block: "start",
-      });
-    }, reduceMotion ? 0 : 2600);
   }
 
   function drawRopeAndBadge() {
@@ -456,8 +490,6 @@ function setupLanyardPhysics() {
       unlockPortfolio();
     }
   });
-  fallbackScan?.addEventListener("click", () => unlockPortfolio());
-
   window.addEventListener("resize", () => {
     if (!state.dragging && !state.unlocked) resetLanyard();
   });

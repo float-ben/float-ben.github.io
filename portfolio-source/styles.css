@@ -1685,6 +1685,14 @@ body.mode-kinetic .console-panel {
   margin-top: 86px;
 }
 
+.modern-portfolio > .portfolio-section-heading,
+.portfolio-split-section,
+.community-section,
+.portfolio-proof-grid {
+  border-top: 1px solid rgba(23, 23, 22, 0.12);
+  padding-top: 62px;
+}
+
 .portfolio-section-heading h3,
 .portfolio-contact-band h3 {
   margin: 0;
@@ -1867,6 +1875,11 @@ body.mode-kinetic .console-panel {
   grid-template-columns: minmax(0, 0.8fr) minmax(320px, 1fr);
   gap: 54px;
   align-items: start;
+  margin-top: 96px;
+}
+
+.portfolio-split-section .portfolio-section-heading {
+  margin-top: 0;
 }
 
 .skill-groups {
@@ -1950,6 +1963,7 @@ body.mode-kinetic .console-panel {
 }
 
 .portfolio-contact-band {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(280px, 0.48fr);
   gap: 42px;
@@ -1961,12 +1975,21 @@ body.mode-kinetic .console-panel {
   color: #fbfaf6;
 }
 
-.portfolio-contact-band span,
+.portfolio-contact-band::before {
+  position: absolute;
+  top: -48px;
+  left: 0;
+  right: 0;
+  border-top: 1px solid rgba(23, 23, 22, 0.12);
+  content: "";
+}
+
+.portfolio-contact-band > div > span,
 .portfolio-contact-band h3 {
   color: inherit;
 }
 
-.portfolio-contact-band span {
+.portfolio-contact-band > div > span {
   opacity: 0.68;
 }
 
@@ -1977,6 +2000,7 @@ body.mode-kinetic .console-panel {
 
 .portfolio-contact-links a,
 .contact-copy {
+  position: relative;
   display: flex;
   min-height: 48px;
   align-items: center;
@@ -1988,6 +2012,7 @@ body.mode-kinetic .console-panel {
   font-size: 0.88rem;
   font-weight: 760;
   overflow-wrap: anywhere;
+  transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
 }
 
 .contact-copy {
@@ -1996,8 +2021,44 @@ body.mode-kinetic .console-panel {
 }
 
 .contact-copy span {
+  display: inline;
+  margin: 0;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: 0;
+  line-height: 1;
   opacity: 1;
+  text-transform: none;
   user-select: text;
+}
+
+.contact-copy::after {
+  content: "Copied";
+  display: inline-flex;
+  min-height: 24px;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0 9px;
+  background: rgba(251, 250, 246, 0.12);
+  color: rgba(251, 250, 246, 0.74);
+  font-size: 0.66rem;
+  font-weight: 840;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateX(5px);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.contact-copy.is-copied {
+  border-color: rgba(161, 214, 187, 0.48);
+  background: rgba(161, 214, 187, 0.12);
+}
+
+.contact-copy.is-copied::after {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .contact-copy:focus-visible {

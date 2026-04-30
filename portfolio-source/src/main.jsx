@@ -12,10 +12,12 @@ function setUnlockedState(unlocked) {
   const scanOutput = document.querySelector("[data-scan-output]");
   const scanInstruction = document.querySelector(".scan-instruction");
   const unlockCopyPanel = document.querySelector(".unlock-copy-panel");
+  const portfolioSection = document.querySelector(".prototype-lanyard .lab-section");
 
   scene?.classList.toggle("is-unlocked", unlocked);
   scene?.classList.remove("is-near");
   article?.classList.toggle("is-unlocked", unlocked);
+  portfolioSection?.classList.toggle("is-visible", unlocked);
   scanner?.classList.remove("is-live");
   scanOutput?.setAttribute("aria-hidden", String(!unlocked));
   scanInstruction?.setAttribute("aria-hidden", String(unlocked));
