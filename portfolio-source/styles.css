@@ -1731,13 +1731,24 @@ body.mode-kinetic .console-panel {
   line-height: 1.15;
 }
 
-.experience-clean-card p {
+.experience-clean-card p,
+.experience-details {
   margin: 0;
   color: #4f4a42;
   line-height: 1.68;
 }
 
-.experience-clean-card ul {
+.experience-details {
+  display: grid;
+  gap: 8px;
+  padding-left: 1.08rem;
+}
+
+.experience-details li {
+  padding-left: 2px;
+}
+
+.experience-tags {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
@@ -1747,7 +1758,7 @@ body.mode-kinetic .console-panel {
   list-style: none;
 }
 
-.experience-clean-card li,
+.experience-tags li,
 .project-clean-card em {
   display: inline-flex;
   min-height: 30px;
@@ -1965,7 +1976,7 @@ body.mode-kinetic .console-panel {
 }
 
 .portfolio-contact-links a,
-.portfolio-contact-links span {
+.contact-copy {
   display: flex;
   min-height: 48px;
   align-items: center;
@@ -1979,8 +1990,19 @@ body.mode-kinetic .console-panel {
   overflow-wrap: anywhere;
 }
 
-.portfolio-contact-links span {
-  cursor: default;
+.contact-copy {
+  cursor: pointer;
+  user-select: text;
+}
+
+.contact-copy span {
+  opacity: 1;
+  user-select: text;
+}
+
+.contact-copy:focus-visible {
+  outline: 2px solid rgba(251, 250, 246, 0.42);
+  outline-offset: 3px;
 }
 
 .artifact-grid {
@@ -2233,7 +2255,7 @@ body.mode-kinetic .console-panel {
     grid-template-columns: 1fr;
   }
 
-  .experience-clean-card ul {
+  .experience-tags {
     justify-content: flex-start;
   }
 }

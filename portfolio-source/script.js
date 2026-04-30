@@ -100,6 +100,35 @@ window.addEventListener("resize", updateProgress);
 updateProgress();
 markVisibleReveals();
 
+document.querySelectorAll("[data-copy-email]").forEach((control) => {
+  const email = control.dataset.copyEmail;
+
+  async function copyEmail() {
+    if (!email) return;
+
+    try {
+      await navigator.clipboard.writeText(email);
+      control.setAttribute("aria-label", "Copied email address");
+    } catch {
+      control.setAttribute("aria-label", "Select email address");
+    }
+
+    window.setTimeout(() => {
+      control.setAttribute("aria-label", "Copy email address");
+    }, 1400);
+  }
+
+  control.addEventListener("click", () => {
+    if (window.getSelection?.().toString()) return;
+    copyEmail();
+  });
+  control.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    event.preventDefault();
+    copyEmail();
+  });
+});
+
 if (!reduceMotion && cursor) {
   window.addEventListener(
     "pointermove",
