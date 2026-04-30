@@ -126,7 +126,7 @@ img {
   border: 0;
   border-radius: 999px;
   background:
-    radial-gradient(circle, rgba(219, 176, 168, 0.3) 0%, rgba(216, 190, 170, 0.18) 38%, rgba(201, 214, 207, 0) 72%);
+    radial-gradient(circle, rgba(159, 206, 234, 0.32) 0%, rgba(190, 220, 238, 0.2) 38%, rgba(201, 214, 207, 0) 72%);
   box-shadow: none;
   pointer-events: none;
   opacity: 0;
@@ -149,7 +149,7 @@ img {
   width: 380px;
   height: 380px;
   background:
-    radial-gradient(circle, rgba(219, 176, 168, 0.34) 0%, rgba(216, 190, 170, 0.2) 38%, rgba(201, 214, 207, 0) 72%);
+    radial-gradient(circle, rgba(159, 206, 234, 0.36) 0%, rgba(190, 220, 238, 0.22) 38%, rgba(201, 214, 207, 0) 72%);
   box-shadow: none;
 }
 
