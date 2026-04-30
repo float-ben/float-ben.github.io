@@ -121,20 +121,20 @@ img {
 .cursor-orb {
   position: fixed;
   z-index: 80;
-  width: 118px;
-  height: 118px;
+  width: 76px;
+  height: 76px;
   border: 0;
   border-radius: 999px;
   background:
-    radial-gradient(circle, color-mix(in srgb, var(--accent-2) 26%, transparent) 0%, transparent 68%);
+    radial-gradient(circle, color-mix(in srgb, var(--accent-2) 44%, transparent) 0%, transparent 66%);
   box-shadow:
-    0 0 46px color-mix(in srgb, var(--accent-2) 24%, transparent),
-    0 0 96px color-mix(in srgb, var(--accent-2) 18%, transparent);
+    0 0 28px color-mix(in srgb, var(--accent-2) 34%, transparent),
+    0 0 58px color-mix(in srgb, var(--accent-2) 24%, transparent);
   pointer-events: none;
   opacity: 0;
   translate: -50% -50%;
   mix-blend-mode: normal;
-  filter: blur(12px);
+  filter: blur(8px);
   transition:
     opacity 180ms ease,
     width 180ms ease,
@@ -144,17 +144,17 @@ img {
 }
 
 .cursor-orb.is-visible {
-  opacity: 0.54;
+  opacity: 0.78;
 }
 
 .cursor-orb.is-large {
-  width: 178px;
-  height: 178px;
+  width: 112px;
+  height: 112px;
   background:
-    radial-gradient(circle, color-mix(in srgb, var(--accent-2) 30%, transparent) 0%, transparent 70%);
+    radial-gradient(circle, color-mix(in srgb, var(--accent-2) 48%, transparent) 0%, transparent 68%);
   box-shadow:
-    0 0 64px color-mix(in srgb, var(--accent-2) 28%, transparent),
-    0 0 132px color-mix(in srgb, var(--accent-2) 20%, transparent);
+    0 0 34px color-mix(in srgb, var(--accent-2) 38%, transparent),
+    0 0 76px color-mix(in srgb, var(--accent-2) 28%, transparent);
 }
 
 .scroll-progress {
