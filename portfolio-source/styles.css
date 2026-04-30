@@ -121,25 +121,41 @@ img {
 .cursor-orb {
   position: fixed;
   z-index: 80;
-  width: 22px;
-  height: 22px;
-  border: 1px solid color-mix(in srgb, var(--accent) 72%, transparent);
+  width: 24px;
+  height: 24px;
+  border: 1px solid color-mix(in srgb, var(--accent-2) 62%, transparent);
   border-radius: 999px;
+  background:
+    radial-gradient(circle, color-mix(in srgb, var(--accent-2) 18%, transparent) 0%, transparent 58%);
+  box-shadow:
+    0 0 18px color-mix(in srgb, var(--accent-2) 24%, transparent),
+    0 0 44px color-mix(in srgb, var(--accent-2) 14%, transparent);
   pointer-events: none;
   opacity: 0;
   translate: -50% -50%;
-  mix-blend-mode: difference;
-  transition: opacity 180ms ease, width 180ms ease, height 180ms ease, border-color 180ms ease;
+  mix-blend-mode: normal;
+  transition:
+    opacity 180ms ease,
+    width 180ms ease,
+    height 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease;
 }
 
 .cursor-orb.is-visible {
-  opacity: 1;
+  opacity: 0.82;
 }
 
 .cursor-orb.is-large {
-  width: 54px;
-  height: 54px;
-  border-color: color-mix(in srgb, var(--accent-2) 86%, transparent);
+  width: 62px;
+  height: 62px;
+  border-color: color-mix(in srgb, var(--accent-2) 48%, transparent);
+  background:
+    radial-gradient(circle, color-mix(in srgb, var(--accent-2) 16%, transparent) 0%, transparent 62%);
+  box-shadow:
+    0 0 28px color-mix(in srgb, var(--accent-2) 26%, transparent),
+    0 0 74px color-mix(in srgb, var(--accent-2) 15%, transparent);
 }
 
 .scroll-progress {
@@ -1682,7 +1698,7 @@ body.mode-kinetic .console-panel {
 
 .portfolio-section-heading {
   max-width: 760px;
-  margin-top: 86px;
+  margin-top: 108px;
 }
 
 .modern-portfolio > .portfolio-section-heading,
@@ -1690,7 +1706,7 @@ body.mode-kinetic .console-panel {
 .community-section,
 .portfolio-proof-grid {
   border-top: 1px solid rgba(23, 23, 22, 0.12);
-  padding-top: 62px;
+  padding-top: 76px;
 }
 
 .portfolio-section-heading h3,
@@ -1789,12 +1805,53 @@ body.mode-kinetic .console-panel {
 }
 
 .project-clean-card {
+  position: relative;
   min-height: 360px;
   padding: 28px;
   border: 1px solid rgba(23, 23, 22, 0.1);
   border-radius: 22px;
   background: rgba(255, 255, 255, 0.62);
   box-shadow: 0 24px 70px rgba(38, 35, 30, 0.08);
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    border-color 220ms ease,
+    background 220ms ease,
+    box-shadow 220ms ease,
+    translate 220ms ease;
+}
+
+.project-clean-card::before,
+.community-card::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 78% 0%, rgba(94, 143, 175, 0.14), transparent 18rem),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.58), transparent 56%);
+  opacity: 0;
+  transition: opacity 220ms ease;
+  content: "";
+}
+
+.project-clean-card:hover,
+.project-clean-card:focus-within,
+.community-card:hover,
+.community-card:focus-within {
+  border-color: rgba(94, 143, 175, 0.25);
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow:
+    0 30px 84px rgba(38, 35, 30, 0.1),
+    0 20px 64px rgba(94, 143, 175, 0.13);
+  translate: 0 -3px;
+}
+
+.project-clean-card:hover::before,
+.project-clean-card:focus-within::before,
+.community-card:hover::before,
+.community-card:focus-within::before {
+  opacity: 1;
 }
 
 .project-clean-card > span {
@@ -1819,7 +1876,7 @@ body.mode-kinetic .console-panel {
 }
 
 .community-section {
-  margin-top: 96px;
+  margin-top: 122px;
 }
 
 .community-section .portfolio-section-heading {
@@ -1835,6 +1892,7 @@ body.mode-kinetic .console-panel {
 }
 
 .community-card {
+  position: relative;
   min-height: 276px;
   height: 100%;
   display: flex;
@@ -1847,6 +1905,13 @@ body.mode-kinetic .console-panel {
     linear-gradient(145deg, rgba(255, 255, 255, 0.78), rgba(244, 247, 246, 0.5)),
     rgba(255, 255, 255, 0.58);
   box-shadow: 0 24px 70px rgba(38, 35, 30, 0.07);
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    border-color 220ms ease,
+    background 220ms ease,
+    box-shadow 220ms ease,
+    translate 220ms ease;
 }
 
 .community-card span {
@@ -1875,7 +1940,7 @@ body.mode-kinetic .console-panel {
   grid-template-columns: minmax(0, 0.8fr) minmax(320px, 1fr);
   gap: 54px;
   align-items: start;
-  margin-top: 96px;
+  margin-top: 122px;
 }
 
 .portfolio-split-section .portfolio-section-heading {
@@ -1908,7 +1973,7 @@ body.mode-kinetic .console-panel {
   grid-template-columns: minmax(300px, 0.42fr) minmax(0, 1fr);
   gap: 54px;
   align-items: center;
-  margin-top: 96px;
+  margin-top: 122px;
 }
 
 .resume-proof-card {
@@ -1925,7 +1990,10 @@ body.mode-kinetic .console-panel {
 .resume-proof-card:hover,
 .resume-proof-card:focus-visible {
   border-color: rgba(23, 23, 22, 0.28);
-  box-shadow: 0 28px 82px rgba(38, 35, 30, 0.16);
+  box-shadow:
+    0 30px 88px rgba(38, 35, 30, 0.15),
+    0 20px 64px rgba(94, 143, 175, 0.12);
+  transform: translateY(-3px);
 }
 
 .resume-proof-card img {
@@ -1968,7 +2036,7 @@ body.mode-kinetic .console-panel {
   grid-template-columns: minmax(0, 1fr) minmax(280px, 0.48fr);
   gap: 42px;
   align-items: center;
-  margin-top: 96px;
+  margin-top: 122px;
   padding: 34px;
   border-radius: 26px;
   background: #171716;
@@ -1977,7 +2045,7 @@ body.mode-kinetic .console-panel {
 
 .portfolio-contact-band::before {
   position: absolute;
-  top: -48px;
+  top: -61px;
   left: 0;
   right: 0;
   border-top: 1px solid rgba(23, 23, 22, 0.12);
@@ -2455,7 +2523,19 @@ body.mode-kinetic .console-panel {
   }
 
   .portfolio-section-heading {
-    margin-top: 70px;
+    margin-top: 82px;
+  }
+
+  .modern-portfolio > .portfolio-section-heading,
+  .portfolio-split-section,
+  .community-section,
+  .portfolio-proof-grid {
+    padding-top: 58px;
+  }
+
+  .community-section,
+  .portfolio-split-section {
+    margin-top: 86px;
   }
 
   .portfolio-section-heading h3,
@@ -2478,7 +2558,7 @@ body.mode-kinetic .console-panel {
   .portfolio-proof-grid,
   .portfolio-contact-band {
     gap: 26px;
-    margin-top: 70px;
+    margin-top: 86px;
   }
 
   .portfolio-contact-band {
