@@ -1856,81 +1856,48 @@ body.mode-kinetic .console-panel {
   margin-top: 122px;
 }
 
-.education-heading {
+.education-section .education-heading {
+  margin-top: 0;
+}
+
+.education-clean-list {
   display: grid;
-  grid-template-columns: minmax(150px, 0.24fr) minmax(0, 1fr);
-  gap: 44px;
-  align-items: center;
+  gap: 0;
+  margin-top: 34px;
 }
 
-.education-heading span {
-  color: #8b343c;
-  font-size: 0.78rem;
-  font-weight: 860;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-
-.education-heading h3 {
-  max-width: 760px;
-  margin: 0;
-  color: #171716;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(4.8rem, 10vw, 9.4rem);
-  font-weight: 650;
-  letter-spacing: -0.055em;
-  line-height: 0.82;
-}
-
-.education-detail {
+.education-clean-row {
   display: grid;
-  grid-template-columns: minmax(260px, 0.42fr) minmax(0, 1fr);
-  gap: 70px;
-  margin-top: 86px;
-  padding-top: 42px;
-  border-top: 1px solid rgba(23, 23, 22, 0.14);
+  grid-template-columns: minmax(240px, 0.42fr) minmax(0, 1fr);
+  gap: 42px;
+  align-items: start;
+  padding: 26px 0;
+  border-top: 1px solid rgba(23, 23, 22, 0.12);
 }
 
-.education-school span {
+.education-clean-row:last-child {
+  border-bottom: 1px solid rgba(23, 23, 22, 0.12);
+}
+
+.education-clean-row span {
   display: block;
-  margin-bottom: 26px;
+  margin-bottom: 10px;
   color: #736d64;
-  font-size: 0.86rem;
-  font-weight: 860;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: 0.84rem;
+  font-weight: 760;
 }
 
-.education-school h4 {
-  max-width: 460px;
+.education-clean-row h4 {
   margin: 0;
   color: #171716;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(2rem, 4vw, 3.1rem);
-  font-weight: 620;
-  letter-spacing: -0.035em;
-  line-height: 1.02;
+  font-size: 1.22rem;
+  line-height: 1.15;
 }
 
-.education-school p {
-  margin: 18px 0 0;
-  color: #514b43;
-  font-size: 1.05rem;
-  line-height: 1.5;
-}
-
-.education-notes {
-  display: grid;
-  gap: 24px;
+.education-clean-row p {
   margin: 0;
-  padding-left: 1.1rem;
   color: #514b43;
-  font-size: clamp(1.05rem, 1.6vw, 1.28rem);
-  line-height: 1.62;
-}
-
-.education-notes li {
-  padding-left: 8px;
+  line-height: 1.68;
 }
 
 .community-section {
@@ -2639,22 +2606,9 @@ body.mode-kinetic .console-panel {
     min-height: auto;
   }
 
-  .education-heading,
-  .education-detail {
+  .education-clean-row {
     grid-template-columns: 1fr;
-  }
-
-  .education-heading {
-    gap: 28px;
-  }
-
-  .education-heading h3 {
-    font-size: clamp(4rem, 18vw, 6.8rem);
-  }
-
-  .education-detail {
-    gap: 36px;
-    margin-top: 58px;
+    gap: 16px;
   }
 
   .project-clean-card > span {
