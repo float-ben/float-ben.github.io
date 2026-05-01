@@ -1745,7 +1745,6 @@ body.mode-kinetic .console-panel {
 
 .experience-clean-card h4,
 .project-clean-card h4,
-.education-card h4,
 .community-card h4,
 .skill-groups h4 {
   margin: 0;
@@ -1822,8 +1821,6 @@ body.mode-kinetic .console-panel {
 
 .project-clean-card:hover,
 .project-clean-card:focus-within,
-.education-card:hover,
-.education-card:focus-within,
 .community-card:hover,
 .community-card:focus-within {
   border-color: rgba(23, 23, 22, 0.18);
@@ -1859,48 +1856,81 @@ body.mode-kinetic .console-panel {
   margin-top: 122px;
 }
 
-.education-section .portfolio-section-heading {
-  margin-top: 0;
-}
-
-.education-grid {
+.education-heading {
   display: grid;
-  grid-template-columns: 0.92fr 1.35fr 1fr;
-  gap: 14px;
-  margin-top: 34px;
-  align-items: stretch;
+  grid-template-columns: minmax(150px, 0.24fr) minmax(0, 1fr);
+  gap: 44px;
+  align-items: center;
 }
 
-.education-card {
-  min-height: 246px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 24px;
-  border: 1px solid rgba(23, 23, 22, 0.1);
-  border-radius: 22px;
-  background:
-    linear-gradient(145deg, rgba(255, 255, 255, 0.82), rgba(244, 247, 246, 0.52)),
-    rgba(255, 255, 255, 0.62);
-  box-shadow: 0 24px 70px rgba(38, 35, 30, 0.07);
-  transition:
-    border-color 220ms ease,
-    background 220ms ease,
-    box-shadow 220ms ease,
-    translate 220ms ease;
-}
-
-.education-card span {
-  color: #736d64;
+.education-heading span {
+  color: #8b343c;
   font-size: 0.78rem;
-  font-weight: 820;
+  font-weight: 860;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
-.education-card p {
+.education-heading h3 {
+  max-width: 760px;
+  margin: 0;
+  color: #171716;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(4.8rem, 10vw, 9.4rem);
+  font-weight: 650;
+  letter-spacing: -0.055em;
+  line-height: 0.82;
+}
+
+.education-detail {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.42fr) minmax(0, 1fr);
+  gap: 70px;
+  margin-top: 86px;
+  padding-top: 42px;
+  border-top: 1px solid rgba(23, 23, 22, 0.14);
+}
+
+.education-school span {
+  display: block;
+  margin-bottom: 26px;
+  color: #736d64;
+  font-size: 0.86rem;
+  font-weight: 860;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.education-school h4 {
+  max-width: 460px;
+  margin: 0;
+  color: #171716;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  font-weight: 620;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+}
+
+.education-school p {
   margin: 18px 0 0;
   color: #514b43;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.education-notes {
+  display: grid;
+  gap: 24px;
+  margin: 0;
+  padding-left: 1.1rem;
+  color: #514b43;
+  font-size: clamp(1.05rem, 1.6vw, 1.28rem);
   line-height: 1.62;
+}
+
+.education-notes li {
+  padding-left: 8px;
 }
 
 .community-section {
@@ -2423,10 +2453,6 @@ body.mode-kinetic .console-panel {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .education-grid {
-    grid-template-columns: 1fr;
-  }
-
   .community-grid {
     grid-template-columns: 1fr;
   }
@@ -2613,14 +2639,22 @@ body.mode-kinetic .console-panel {
     min-height: auto;
   }
 
-  .education-grid {
+  .education-heading,
+  .education-detail {
     grid-template-columns: 1fr;
   }
 
-  .education-card {
-    min-height: auto;
-    gap: 46px;
-    border-radius: 18px;
+  .education-heading {
+    gap: 28px;
+  }
+
+  .education-heading h3 {
+    font-size: clamp(4rem, 18vw, 6.8rem);
+  }
+
+  .education-detail {
+    gap: 36px;
+    margin-top: 58px;
   }
 
   .project-clean-card > span {
