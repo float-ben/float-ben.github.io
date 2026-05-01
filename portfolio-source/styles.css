@@ -126,7 +126,7 @@ img {
   border: 0;
   border-radius: 999px;
   background:
-    radial-gradient(circle, rgba(159, 206, 234, 0.32) 0%, rgba(190, 220, 238, 0.2) 38%, rgba(201, 214, 207, 0) 72%);
+    radial-gradient(circle, rgba(159, 206, 234, 0.38) 0%, rgba(190, 220, 238, 0.24) 38%, rgba(201, 214, 207, 0) 72%);
   box-shadow: none;
   pointer-events: none;
   opacity: 0;
@@ -142,14 +142,14 @@ img {
 }
 
 .cursor-orb.is-visible {
-  opacity: 0.58;
+  opacity: 0.64;
 }
 
 .cursor-orb.is-large {
   width: 380px;
   height: 380px;
   background:
-    radial-gradient(circle, rgba(159, 206, 234, 0.36) 0%, rgba(190, 220, 238, 0.22) 38%, rgba(201, 214, 207, 0) 72%);
+    radial-gradient(circle, rgba(159, 206, 234, 0.42) 0%, rgba(190, 220, 238, 0.26) 38%, rgba(201, 214, 207, 0) 72%);
   box-shadow: none;
 }
 
@@ -1698,6 +1698,7 @@ body.mode-kinetic .console-panel {
 
 .modern-portfolio > .portfolio-section-heading,
 .portfolio-split-section,
+.education-section,
 .community-section,
 .portfolio-proof-grid {
   border-top: 1px solid rgba(23, 23, 22, 0.12);
@@ -1742,6 +1743,7 @@ body.mode-kinetic .console-panel {
 
 .experience-clean-card h4,
 .project-clean-card h4,
+.education-card h4,
 .community-card h4,
 .skill-groups h4 {
   margin: 0;
@@ -1818,13 +1820,15 @@ body.mode-kinetic .console-panel {
 
 .project-clean-card:hover,
 .project-clean-card:focus-within,
+.education-card:hover,
+.education-card:focus-within,
 .community-card:hover,
 .community-card:focus-within {
   border-color: rgba(23, 23, 22, 0.18);
   background: rgba(255, 255, 255, 0.78);
   box-shadow:
-    0 34px 90px rgba(38, 35, 30, 0.14),
-    0 10px 28px rgba(38, 35, 30, 0.08);
+    0 44px 110px rgba(38, 35, 30, 0.2),
+    0 18px 42px rgba(38, 35, 30, 0.11);
   translate: 0 -3px;
 }
 
@@ -1847,6 +1851,54 @@ body.mode-kinetic .console-panel {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+}
+
+.education-section {
+  margin-top: 122px;
+}
+
+.education-section .portfolio-section-heading {
+  margin-top: 0;
+}
+
+.education-grid {
+  display: grid;
+  grid-template-columns: 0.92fr 1.35fr 1fr;
+  gap: 14px;
+  margin-top: 34px;
+  align-items: stretch;
+}
+
+.education-card {
+  min-height: 246px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+  border: 1px solid rgba(23, 23, 22, 0.1);
+  border-radius: 22px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.82), rgba(244, 247, 246, 0.52)),
+    rgba(255, 255, 255, 0.62);
+  box-shadow: 0 24px 70px rgba(38, 35, 30, 0.07);
+  transition:
+    border-color 220ms ease,
+    background 220ms ease,
+    box-shadow 220ms ease,
+    translate 220ms ease;
+}
+
+.education-card span {
+  color: #736d64;
+  font-size: 0.78rem;
+  font-weight: 820;
+  text-transform: uppercase;
+}
+
+.education-card p {
+  margin: 18px 0 0;
+  color: #514b43;
+  line-height: 1.62;
 }
 
 .community-section {
@@ -1971,8 +2023,8 @@ body.mode-kinetic .console-panel {
 .resume-proof-card:focus-visible {
   border-color: rgba(23, 23, 22, 0.28);
   box-shadow:
-    0 30px 88px rgba(38, 35, 30, 0.15),
-    0 20px 64px rgba(94, 143, 175, 0.12);
+    0 44px 112px rgba(38, 35, 30, 0.21),
+    0 22px 58px rgba(38, 35, 30, 0.12);
   transform: translateY(-3px);
 }
 
@@ -2343,6 +2395,10 @@ body.mode-kinetic .console-panel {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .education-grid {
+    grid-template-columns: 1fr;
+  }
+
   .community-grid {
     grid-template-columns: 1fr;
   }
@@ -2508,12 +2564,14 @@ body.mode-kinetic .console-panel {
 
   .modern-portfolio > .portfolio-section-heading,
   .portfolio-split-section,
+  .education-section,
   .community-section,
   .portfolio-proof-grid {
     padding-top: 58px;
   }
 
   .community-section,
+  .education-section,
   .portfolio-split-section {
     margin-top: 86px;
   }
@@ -2525,6 +2583,16 @@ body.mode-kinetic .console-panel {
 
   .project-clean-card {
     min-height: auto;
+  }
+
+  .education-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .education-card {
+    min-height: auto;
+    gap: 46px;
+    border-radius: 18px;
   }
 
   .project-clean-card > span {
