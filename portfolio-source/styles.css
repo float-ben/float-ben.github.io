@@ -1541,13 +1541,15 @@ body.mode-kinetic .console-panel {
 }
 
 .portfolio-jump-nav a:hover,
-.portfolio-jump-nav a:focus-visible {
+.portfolio-jump-nav a:focus-visible,
+.portfolio-jump-nav a.is-active {
   background: #171716;
   color: #fbfaf6;
 }
 
 #work,
 #projects,
+#education,
 #skills,
 #community,
 #contact {
@@ -2249,9 +2251,35 @@ body.mode-kinetic .console-panel {
   transform: translateY(0);
 }
 
+.scroll-reveal {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(22px);
+  transition:
+    opacity 620ms ease,
+    filter 620ms ease,
+    transform 620ms ease;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
 .tilt-card {
   transform-style: preserve-3d;
   will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    transition: none;
+  }
 }
 
 @keyframes actionShine {

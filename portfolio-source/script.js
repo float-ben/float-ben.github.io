@@ -101,6 +101,64 @@ const revealObserver = new IntersectionObserver(
 
 document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
 
+const scrollRevealItems = [
+  ...document.querySelectorAll(
+    [
+      ".modern-portfolio > .portfolio-section-heading",
+      ".portfolio-split-section > .portfolio-section-heading",
+      ".education-section .portfolio-section-heading",
+      ".community-section .portfolio-section-heading",
+      ".proof-copy .portfolio-section-heading",
+      ".portfolio-contact-band > div:first-child",
+      ".experience-clean-card",
+      ".project-clean-card",
+      ".education-card",
+      ".community-card",
+      ".skill-groups > div",
+      ".resume-proof-card",
+      ".portfolio-contact-links > *",
+    ].join(", ")
+  ),
+];
+
+const revealGroups = [
+  ".experience-clean-list",
+  ".project-clean-grid",
+  ".education-grid",
+  ".skill-groups",
+  ".community-grid",
+  ".portfolio-contact-links",
+];
+
+revealGroups.forEach((selector) => {
+  document.querySelectorAll(selector).forEach((group) => {
+    [...group.children].forEach((child, index) => {
+      child.style.setProperty("--reveal-delay", `${Math.min(index * 80, 320)}ms`);
+    });
+  });
+});
+
+if (reduceMotion) {
+  scrollRevealItems.forEach((element) => element.classList.add("is-visible"));
+} else {
+  const scrollRevealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          scrollRevealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { rootMargin: "0px 0px -12% 0px", threshold: 0.12 }
+  );
+
+  scrollRevealItems.forEach((element) => {
+    element.classList.add("scroll-reveal");
+    scrollRevealObserver.observe(element);
+  });
+}
+
 function markVisibleReveals() {
   document.querySelectorAll(".prototype.is-active .reveal").forEach((element) => {
     const rect = element.getBoundingClientRect();
@@ -120,6 +178,50 @@ window.addEventListener("scroll", updateProgress, { passive: true });
 window.addEventListener("resize", updateProgress);
 updateProgress();
 markVisibleReveals();
+
+const portfolioNavLinks = [...document.querySelectorAll(".portfolio-jump-nav a")];
+const portfolioNavTargets = portfolioNavLinks
+  .map((link) => {
+    const target = document.querySelector(link.getAttribute("href"));
+    return target ? { link, target } : null;
+  })
+  .filter(Boolean);
+
+function updatePortfolioNavState() {
+  if (!portfolioNavTargets.length) return;
+
+  const triggerY = Number.parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--header-height")) + 150;
+  let active = portfolioNavTargets[0];
+
+  portfolioNavTargets.forEach((item) => {
+    if (item.target.getBoundingClientRect().top <= triggerY) {
+      active = item;
+    }
+  });
+
+  portfolioNavTargets.forEach(({ link }) => {
+    const isActive = link === active.link;
+    link.classList.toggle("is-active", isActive);
+    if (isActive) {
+      link.setAttribute("aria-current", "true");
+    } else {
+      link.removeAttribute("aria-current");
+    }
+  });
+}
+
+let navStateFrame = 0;
+function requestPortfolioNavState() {
+  if (navStateFrame) return;
+  navStateFrame = window.requestAnimationFrame(() => {
+    navStateFrame = 0;
+    updatePortfolioNavState();
+  });
+}
+
+window.addEventListener("scroll", requestPortfolioNavState, { passive: true });
+window.addEventListener("resize", requestPortfolioNavState);
+updatePortfolioNavState();
 
 document.querySelectorAll("[data-copy-email]").forEach((control) => {
   const email = control.dataset.copyEmail;
